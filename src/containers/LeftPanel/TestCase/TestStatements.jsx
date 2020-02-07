@@ -14,24 +14,6 @@ import Endpoint from '../Endpoint/Endpoint';
 const TestStatements = function TestStatements({ statements, dispatchToTestCase }) {
   return statements.map((statement, i) => {
     switch (statement.type) {
-      case 'middleware':
-        return (
-          <Middleware
-            key={statement.id}
-            middleware={statement}
-            index={i}
-            dispatchToTestCase={dispatchToTestCase}
-          />
-        );
-        case 'context':
-          return ( 
-            <Context
-              key={statement.id}
-              context={statement}
-              index={i}
-              dispatchToTestCase={dispatchToTestCase}
-            />
-          );
       case 'action':
         return (
           <Action
@@ -80,34 +62,6 @@ const TestStatements = function TestStatements({ statements, dispatchToTestCase 
         );
       case 'render':
         return <Rerender key={statement.id} render={statement} index={i} />;
-      case 'action-creator':
-        return (
-          <ActionCreator
-            key={statement.id}
-            actionCreator={statement}
-            index={i}
-            dispatchToTestCase={dispatchToTestCase}
-          />
-        );
-      case 'hookRender':
-        return (
-          <HookRender
-            key={statement.id}
-            hookRender={statement}
-            index={i}
-            dispatchToTestCase={dispatchToTestCase}
-          />
-        );
-
-      case 'hook-updates':
-        return (
-          <HookUpdates
-            key={statement.id}
-            hookUpdates={statement}
-            index={i}
-            dispatchToTestCase={dispatchToTestCase}
-          />
-        );
       default:
         return <></>;
     }
